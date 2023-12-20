@@ -2,16 +2,17 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: tourimse-sitd
+  namespace: argocd
 spec:
   destination:
     namespace: tourisme-sitd
     server: 'https://kubernetes.default.svc'
   source:
-    path: impdeploy
+    path: impdeploy/
     repoURL: 'https://github.com/davidagoua/nginx-depl.git'
     targetRevision: HEAD
   sources: []
-  project: tourisme-sitd
+  project: default
   syncPolicy:
     automated:
       prune: true
