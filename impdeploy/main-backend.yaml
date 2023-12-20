@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: main-backend
-          image: alpine
+          image: caddy/caddy
           imagePullPolicy: IfNotPresent
       restartPolicy: Always
 
@@ -31,4 +31,4 @@ spec:
   selector:
     app: main-backend
   ports:
-    - port: 25
+    - port: 80
