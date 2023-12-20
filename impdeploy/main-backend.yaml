@@ -4,9 +4,8 @@ metadata:
   name: main-backend
   labels:
     app: main-backend
-    tiers: backend
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: main-backend
@@ -18,20 +17,7 @@ spec:
     spec:
       containers:
         - name: main-backend
-          image: redis/redis-stack
+          image: alpine
           imagePullPolicy: IfNotPresent
       restartPolicy: Always
-
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: main-backend-svc
-spec:
-  ports:
-    - port: 8001
-      name: dashboard
-    - port: 6379
-      name: service
       
