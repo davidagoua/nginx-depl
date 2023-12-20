@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: main-backend
+  labels:
+    app: main-backend
+    tiers: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: main-backend
+  template:
+    metadata:
+      name: main-backend
+      labels:
+        app: main-backend
+    spec:
+      containers:
+        - name: main-backend
+          image: redis/redis-stack
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: main-backend-svc
+spec:
+  ports:
+    - port: 8001
+    - port: 6379
+      
