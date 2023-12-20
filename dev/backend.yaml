@@ -29,6 +29,8 @@ kind: Service
 metadata:
   name: main-backend-svc
 spec:
+  selector:
+    app: main-backend
   ports:
     - port: 8001
       name: dashboard

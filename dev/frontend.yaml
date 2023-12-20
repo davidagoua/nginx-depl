@@ -28,6 +28,8 @@ metadata:
   name: frontend-svc
 spec:
   type: LoadBalancer
+  selector:
+    app: frontend
   ports:
     - port: 80
       

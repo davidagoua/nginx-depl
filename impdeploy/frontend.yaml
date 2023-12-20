@@ -29,6 +29,8 @@ metadata:
   labels:
     tiers: front
 spec:
+  selector:
+    app: frontend
   type: LoadBalancer
   ports:
     - port: 80
