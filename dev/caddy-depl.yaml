@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: caddy-depl
+  labels:
+    app: caddy-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: caddy-depl
+  template:
+    metadata:
+      name: caddy-depl
+      labels:
+        app: caddy-depl
+    spec:
+      containers:
+        - name: caddy-depl
+          image: caddy
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: caddy-depl-svc
+spec:
+  selector:
+    app: caddy-depl
+  type: NodePort
+  ports:
+    - protocol: TCP
+      nodePort: 31085
+      port: 80
+      targetPort: 80
