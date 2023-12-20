@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: firstapp
+spec:
+  destination:
+    name: firstapp-github
+    namespace: argocd
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: /
+    repoURL: 'https://github.com/davidagoua/nginx-depl.git'
+    targetRevision: HEAD
+  sources: []
+  project: firstproject
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
