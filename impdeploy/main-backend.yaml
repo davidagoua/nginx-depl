@@ -27,6 +27,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: impdeploy
   name: main-backend-svc
 spec:
   selector:
