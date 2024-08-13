@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: impdeploy
   name: user-service
   labels:
     app: user-service
